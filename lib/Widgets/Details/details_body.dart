@@ -51,7 +51,6 @@ class DetailsBody extends StatelessWidget {
                 'السعر :\$${product.price}',
                 style: TextStyle(fontSize: 24, color: Colors.orange),
               ),
-              SizedBox(height: 20,)
             ],
           ),
         ),
