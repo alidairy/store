@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-
+import 'package:store_app/main.dart';
 class ProductImage extends StatelessWidget {
-  const ProductImage({super.key, required this.image, required this.size});
-  final Size size;
+  const ProductImage({super.key, required this.image});
   final String image;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
-      height: size.width * 0.7,
+      margin: EdgeInsets.symmetric(vertical: getFlexibleHeight(context, 20)),
+      height:getFlexibleHeight(context, 250),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           Container(
-            height: size.width * 0.6,
-            width: size.width * 0.6,
+            height: getFlexibleWidth(context, 200),
+            width: getFlexibleWidth(context, 200),
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
@@ -23,8 +22,8 @@ class ProductImage extends StatelessWidget {
           ),
           Image.asset(
             image,
-            height: size.width * 0.65,
-            width: size.width * 0.65,
+            height: getFlexibleWidth(context,200),
+            width:getFlexibleWidth(context, 200),
             fit: BoxFit.cover,
           ),
         ],

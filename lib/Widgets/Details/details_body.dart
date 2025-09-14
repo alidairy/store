@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:store_app/Widgets/Details/color_dot.dart';
 import 'package:store_app/Widgets/Details/product_image.dart';
 import 'package:store_app/Models/product.dart';
-
+import 'package:store_app/main.dart';
 class DetailsBody extends StatelessWidget {
   const DetailsBody({super.key, required this.product});
   final Product product;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,7 +26,7 @@ class DetailsBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: ProductImage(size: size, image: product.image),
+                child: ProductImage(image: product.image),
               ),
               Padding(
                 padding: EdgeInsets.all(10),
@@ -44,12 +43,15 @@ class DetailsBody extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: Text(
                   product.title,
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: AppTextStyle(context).titleMedium,
                 ),
               ),
-              Text(
-                'السعر :\$${product.price}',
-                style: TextStyle(fontSize: 24, color: Colors.orange),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  'السعر :\$${product.price}',
+                  style: AppTextStyle(context).titleMedium.copyWith(color: Colors.orange),
+                ),
               ),
             ],
           ),

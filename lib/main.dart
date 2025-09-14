@@ -42,10 +42,19 @@ double getFlexibleHeight(BuildContext context, double px) {
   return verticalSize;
 }
 
-double getFlexibeWithd(BuildContext context, double px) {
+double getFlexibleWidth(BuildContext context, double px) {
   double screenWidth = MediaQuery.of(context).size.width;
   double horizontalSize = screenWidth * (px / 393);
   return horizontalSize;
+}
+
+
+double getHeight(BuildContext context) {
+  return MediaQuery.of(context).size.height;
+}
+
+double getWithd(BuildContext context) {
+  return MediaQuery.of(context).size.width;
 }
 
 class AppTextStyle {
@@ -70,6 +79,6 @@ class AppTextStyle {
   TextStyle get labelLarge =>
       Theme.of(
         context,
-      ).textTheme.labelLarge?.copyWith(fontSize: screenHight * 0.018) ??
+      ).textTheme.labelLarge?.copyWith(fontSize: screenHight * 0.018,) ??
       TextStyle(fontSize: screenHight * 0.018);
 }

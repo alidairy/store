@@ -17,6 +17,7 @@ class DetailsScreen extends StatelessWidget {
           child: BackButton(color: Color(0xFF219ebc)),
         ),
         title: Text('رجوع'),
+        centerTitle: true,
       ),
 
       body: DetailsBody(product: product),

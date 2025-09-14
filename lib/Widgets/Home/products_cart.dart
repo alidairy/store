@@ -49,7 +49,7 @@ class ProductsCard extends StatelessWidget {
 
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: getFlexibeWithd(context, 20)),
+                        padding: EdgeInsets.symmetric(horizontal: getFlexibleWidth(context, 20)),
                         child: Text(
                           product.title,
                           style: styles.titleMedium,
@@ -57,7 +57,7 @@ class ProductsCard extends StatelessWidget {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: getFlexibeWithd(context, 20)),
+                        padding: EdgeInsets.symmetric(horizontal: getFlexibleWidth(context, 20)),
                         child: Text(
                           product.subTitle,
                           style: styles.labelMedium,
@@ -66,10 +66,10 @@ class ProductsCard extends StatelessWidget {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal:getFlexibeWithd(context, 10)),
+                        padding: EdgeInsets.symmetric(horizontal:getFlexibleWidth(context, 10)),
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal:getFlexibeWithd(context, 15),
+                            horizontal:getFlexibleWidth(context, 15),
                             vertical: getFlexibleHeight(context, 5),
                           ),
                           decoration: BoxDecoration(
@@ -88,7 +88,7 @@ class ProductsCard extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  width:getFlexibeWithd(context, 150),
+                  width:getFlexibleWidth(context, 150),
                   child: Image.asset(product.image, fit: BoxFit.contain),
                 ),
               ],

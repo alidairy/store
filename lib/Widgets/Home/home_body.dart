@@ -8,9 +8,8 @@ class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
-      bottom: false,
+      //bottom: false,
       child: Column(
         children: [
           SizedBox(height: getFlexibleHeight(context, 20)),
@@ -29,7 +28,9 @@ class HomeBody extends StatelessWidget {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: getFlexibeWithd(context, 15)),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getFlexibleWidth(context, 15),
+                  ),
                   child: ListView.builder(
                     itemCount: products.length,
 
@@ -40,8 +41,7 @@ class HomeBody extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                DetailsScreen(product: products[index]),
+                            builder: (context) => DetailsScreen(product: products[index]),
                           ),
                         );
                       },
@@ -55,5 +55,4 @@ class HomeBody extends StatelessWidget {
       ),
     );
   }
-  
 }
