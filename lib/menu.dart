@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/Screens/home_screen.dart';
-import 'main.dart';
+import 'package:store_app/utils/responsive.dart';
+import 'package:store_app/section_screen.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -20,21 +20,21 @@ class MenuPage extends StatelessWidget {
         decoration: BoxDecoration(
           color: Color(0xFFF1EFF1),
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20),
-          ),
+              bottomLeft: Radius.circular(getFlexibleWidth(context, 20)),
+              bottomRight: Radius.circular(getFlexibleWidth(context, 20)),
+            ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             sectionPage(context, 'اجهزة كهربائية'),
+            sectionPage(context, 'اجهزة ذكية'),
             sectionPage(context, 'العاب اطفال'),
             sectionPage(context, 'اثاث منزل'),
             sectionPage(context, 'منتجات غذائية'),
-            sectionPage(context, 'اجهزة ذكية '),
-            sectionPage(context, 'مستلزمات شخصية '),
-            sectionPage(context, 'مستلزمات رياضية '),
+            sectionPage(context, 'مستلزمات شخصية'),
+            sectionPage(context, 'مستلزمات رياضية'),
           ],
         ),
       ),
@@ -44,12 +44,12 @@ class MenuPage extends StatelessWidget {
 
 Padding sectionPage(BuildContext context, String sectionName) {
   return Padding(
-    padding: const EdgeInsets.all(10),
+    padding: EdgeInsets.all(getFlexibleWidth(context, 10)),
     child: InkWell(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => SectionScreen(sectionName:sectionName)),
         );
       },
       child: Container(
@@ -61,8 +61,8 @@ Padding sectionPage(BuildContext context, String sectionName) {
         decoration: BoxDecoration(
           color: Color(0xFF219ebc),
           borderRadius: BorderRadius.horizontal(
-            left: Radius.circular(20),
-            right: Radius.circular(20),
+            left: Radius.circular(getFlexibleWidth(context, 20)),
+            right: Radius.circular(getFlexibleWidth(context, 20)),
           ),
         ),
         child: Text(

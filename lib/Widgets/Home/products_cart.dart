@@ -1,34 +1,111 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Models/product.dart';
-import 'package:store_app/main.dart';
+import 'package:store_app/utils/responsive.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
-class ProductsCard extends StatelessWidget {
-  const ProductsCard({
+class HorizontalProductCard extends StatelessWidget {
+  const HorizontalProductCard({
     super.key,
-    required this.itemIndex,
     required this.product,
-    required this.press, 
+    required this.onTap,
   });
 
-  final int itemIndex;
   final Product product;
-  final VoidCallback press;
+  final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) {
-  final styles = AppTextStyle(context);
-    
+    final styles = AppTextStyle(context);
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: getFlexibleWidth(context, 5)),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          width: getFlexibleWidth(context, 160),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0, 6),
+                blurRadius: 8,
+                color: Colors.black12,
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: getFlexibleWidth(context, 125),
+                height: getFlexibleHeight(context, 125),
+                color: Colors.grey[400],
+                child: CachedNetworkImage(
+                  imageUrl: product.image,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) {
+                    return Center(
+                      child: Icon(
+                        Icons.broken_image,
+                        size: getFlexibleWidth(context, 50),
+                        color: Colors.grey,
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getFlexibleWidth(context, 5),
+                  vertical: getFlexibleHeight(context, 5),
+                ),
+                child: Text(
+                  product.title,
+                  style: styles.labelLarge,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              
+              Padding(
+                padding: EdgeInsets.only(bottom: getFlexibleHeight(context, 5)),
+                child: Text('\$${product.price}', style: styles.labelLarge),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class VerticalProductsCard extends StatelessWidget {
+  const VerticalProductsCard({
+    super.key,
+    required this.product,
+    required this.onTap,
+  });
+
+  final Product product;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) {
+    final styles = AppTextStyle(context);
+
     return Container(
-      margin: EdgeInsets.symmetric(vertical:getFlexibleHeight(context,15)),
+      margin: EdgeInsets.symmetric(vertical: getFlexibleHeight(context, 15)),
       height: getFlexibleHeight(context, 150),
       child: InkWell(
-        onTap: press,
+        onTap: onTap,
 
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(getFlexibleWidth(context, 22)),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
@@ -42,6 +119,7 @@ class ProductsCard extends StatelessWidget {
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
+
               children: [
                 Expanded(
                   child: Column(
@@ -49,15 +127,22 @@ class ProductsCard extends StatelessWidget {
 
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: getFlexibleWidth(context, 20)),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getFlexibleWidth(context, 20),
+                        ),
                         child: Text(
                           product.title,
                           style: styles.titleMedium,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
                         ),
                       ),
 
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: getFlexibleWidth(context, 20)),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getFlexibleWidth(context, 20),
+                        ),
                         child: Text(
                           product.subTitle,
                           style: styles.labelMedium,
@@ -66,14 +151,16 @@ class ProductsCard extends StatelessWidget {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal:getFlexibleWidth(context, 10)),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getFlexibleWidth(context, 10),
+                        ),
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                            horizontal:getFlexibleWidth(context, 15),
+                            horizontal: getFlexibleWidth(context, 15),
                             vertical: getFlexibleHeight(context, 5),
                           ),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
+                            borderRadius: BorderRadius.circular(getFlexibleWidth(context, 25)),
                             color: Colors.orange,
                           ),
 
@@ -88,8 +175,21 @@ class ProductsCard extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  width:getFlexibleWidth(context, 150),
-                  child: Image.asset(product.image, fit: BoxFit.contain),
+                  width: getFlexibleWidth(context, 150),
+                  child: CachedNetworkImage(
+                    imageUrl: product.image,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) {
+                      return Center(
+                        child: Icon(
+                          Icons.broken_image,
+                          size: getFlexibleWidth(context, 50),
+                          color: Colors.grey,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
@@ -99,4 +199,3 @@ class ProductsCard extends StatelessWidget {
     );
   }
 }
-

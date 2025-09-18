@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Widgets/Details/details_body.dart';
 import 'package:store_app/Models/product.dart';
+import 'package:store_app/utils/responsive.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.product});
@@ -13,7 +14,7 @@ class DetailsScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Color(0xFFF1EFF1),
         leading: Padding(
-          padding: const EdgeInsets.only(right: 20),
+          padding: EdgeInsets.only(right: getFlexibleWidth(context, 20)),
           child: BackButton(color: Color(0xFF219ebc)),
         ),
         title: Text('رجوع'),

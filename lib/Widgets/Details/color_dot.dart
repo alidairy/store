@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/utils/responsive.dart';
 
 class ColorDot extends StatelessWidget {
   const ColorDot({
@@ -12,10 +13,10 @@ class ColorDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(3),
-      margin: EdgeInsets.symmetric(horizontal: 15),
-      height: 24,
-      width: 24,
+      padding: EdgeInsets.all(getFlexibleWidth(context, 3)),
+      margin: EdgeInsets.symmetric(horizontal: getFlexibleWidth(context, 15)),
+      height: getFlexibleWidth(context, 24),
+      width: getFlexibleWidth(context, 24),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(

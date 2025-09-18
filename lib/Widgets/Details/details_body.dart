@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:store_app/Widgets/Details/color_dot.dart';
 import 'package:store_app/Widgets/Details/product_image.dart';
 import 'package:store_app/Models/product.dart';
-import 'package:store_app/main.dart';
+import 'package:store_app/utils/responsive.dart';
+
 class DetailsBody extends StatelessWidget {
   const DetailsBody({super.key, required this.product});
   final Product product;
@@ -13,7 +14,9 @@ class DetailsBody extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 30),
+          padding: EdgeInsets.symmetric(
+            horizontal: getFlexibleWidth(context, 30),
+          ),
           decoration: BoxDecoration(
             color: Color(0xFFF1EFF1),
             borderRadius: BorderRadius.only(
@@ -25,11 +28,9 @@ class DetailsBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: ProductImage(image: product.image),
-              ),
+              Center(child: ProductImage(image: product.image)),
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(getFlexibleWidth(context, 10)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -40,33 +41,39 @@ class DetailsBody extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(getFlexibleWidth(context, 10)),
                 child: Text(
                   product.title,
                   style: AppTextStyle(context).titleMedium,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(getFlexibleWidth(context, 10)),
                 child: Text(
                   'السعر :\$${product.price}',
-                  style: AppTextStyle(context).titleMedium.copyWith(color: Colors.orange),
+                  style: AppTextStyle(
+                    context,
+                  ).titleMedium.copyWith(color: Colors.orange),
                 ),
               ),
             ],
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(vertical:  10),
+          margin: EdgeInsets.symmetric(
+            vertical: getFlexibleHeight(context, 10),
+          ),
           padding: EdgeInsets.symmetric(
-            horizontal:30,
-            vertical: 10,
+            horizontal: getFlexibleWidth(context, 30),
+            vertical: getFlexibleHeight(context, 10),
           ),
           child: Text(
             product.description,
-            style: TextStyle(color: Colors.white,fontSize: 18),
+            style: AppTextStyle(
+              context,
+            ).labelMedium.copyWith(color: Colors.white),
           ),
-        )
+        ),
       ],
     );
   }

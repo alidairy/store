@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Widgets/Home/home_body.dart';
-import 'package:store_app/main.dart';
+import 'package:store_app/utils/responsive.dart';
 import 'package:store_app/menu.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,38 +11,39 @@ class HomeScreen extends StatelessWidget {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF219ebc),
-
+      backgroundColor: Colors.grey[250],
       appBar: homeAppBar(context, scaffoldKey),
-      endDrawer: Drawer(
-        width: getFlexibleWidth(context,300),
-        child: MenuPage()
-      ),
-      
       body: HomeBody(),
+    
+      endDrawer: Drawer(
+        width: getFlexibleWidth(context, 300),
+        child: MenuPage(),
+      ),
     );
   }
 
-  AppBar homeAppBar(BuildContext context , GlobalKey<ScaffoldState> scaffoldKey) {
+  AppBar homeAppBar(
+    BuildContext context,
+    GlobalKey<ScaffoldState> scaffoldKey,
+  ) {
     return AppBar(
-      backgroundColor: Color(0xFF219ebc),
+      backgroundColor: Colors.grey[250],
+
       automaticallyImplyLeading: false,
       elevation: 0,
       title: Text(
         'مرحبا بكم بمتجر الالكترونيات',
-        style: AppTextStyle(context).titleMedium.copyWith(color: Colors.white),
+        style: AppTextStyle(context).titleMedium,
       ),
       centerTitle: false,
       actions: [
         IconButton(
-          icon: Icon(Icons.menu, color: Colors.white),
+          icon: Icon(Icons.menu),
           onPressed: () {
             scaffoldKey.currentState?.openEndDrawer();
           },
         ),
       ],
-      
     );
   }
 }
-
