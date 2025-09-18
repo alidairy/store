@@ -105,7 +105,7 @@ class VerticalProductsCard extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(getFlexibleWidth(context, 22)),
+                borderRadius: BorderRadius.circular(getFlexibleWidth(context, 5)),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
@@ -174,21 +174,27 @@ class VerticalProductsCard extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(
-                  width: getFlexibleWidth(context, 150),
-                  child: CachedNetworkImage(
-                    imageUrl: product.image,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) {
-                      return Center(
-                        child: Icon(
-                          Icons.broken_image,
-                          size: getFlexibleWidth(context, 50),
-                          color: Colors.grey,
-                        ),
-                      );
-                    },
+                Padding(
+                  padding: EdgeInsets.all(getFlexibleWidth(context, 5)),
+                  child: SizedBox(
+                    width: getFlexibleWidth(context, 125),
+                    child: AspectRatio(
+                      aspectRatio: 1/1,
+                      child: CachedNetworkImage(
+                        imageUrl: product.image,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) {
+                          return Center(
+                            child: Icon(
+                              Icons.broken_image,
+                              size: getFlexibleWidth(context, 50),
+                              color: Colors.grey,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ),
               ],

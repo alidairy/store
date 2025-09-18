@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/utils/responsive.dart';
-import 'package:store_app/section_screen.dart';
+import 'package:store_app/Screens/section_screen.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -20,8 +20,8 @@ class MenuPage extends StatelessWidget {
         decoration: BoxDecoration(
           color: Color(0xFFF1EFF1),
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(getFlexibleWidth(context, 20)),
-              bottomRight: Radius.circular(getFlexibleWidth(context, 20)),
+              bottomLeft: Radius.circular(getFlexibleWidth(context, 15)),
+              bottomRight: Radius.circular(getFlexibleWidth(context, 15)),
             ),
         ),
         child: Column(
@@ -61,8 +61,8 @@ Padding sectionPage(BuildContext context, String sectionName) {
         decoration: BoxDecoration(
           color: Color(0xFF219ebc),
           borderRadius: BorderRadius.horizontal(
-            left: Radius.circular(getFlexibleWidth(context, 20)),
-            right: Radius.circular(getFlexibleWidth(context, 20)),
+            left: Radius.circular(getFlexibleWidth(context, 10)),
+            right: Radius.circular(getFlexibleWidth(context, 10)),
           ),
         ),
         child: Text(

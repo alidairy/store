@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Widgets/Home/home_body.dart';
 import 'package:store_app/utils/responsive.dart';
-import 'package:store_app/menu.dart';
+import 'package:store_app/Widgets/Menu/menu.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

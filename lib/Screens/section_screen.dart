@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Screens/home_screen.dart';
 import 'package:store_app/utils/responsive.dart';
-import 'section_body.dart';
-import 'menu.dart';
+import '../Widgets/Section/section_body.dart';
+import '../Widgets/Menu/menu.dart';
 
 class SectionScreen extends StatelessWidget {
   const SectionScreen({super.key, required this.sectionName});

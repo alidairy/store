@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:store_app/utils/responsive.dart';
 import 'package:store_app/Screens/details_screen.dart';
 import 'package:store_app/Models/product.dart';
-import 'package:store_app/section_screen.dart';
+import 'package:store_app/Screens/section_screen.dart';
 import 'products_cart.dart';
 
 class HomeBody extends StatelessWidget {

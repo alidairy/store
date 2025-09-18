@@ -20,8 +20,8 @@ class DetailsBody extends StatelessWidget {
           decoration: BoxDecoration(
             color: Color(0xFFF1EFF1),
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(50),
-              bottomRight: Radius.circular(50),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
             ),
           ),
 
